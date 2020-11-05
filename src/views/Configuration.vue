@@ -16,8 +16,8 @@ import KeyboardButton from "@/components/KeyboardButton.vue"; // @ is an alias t
     return {
       keys: {
         q: { value: "q", pressed: false },
-        Shift: { value: "shift", pressed: false },
-        Control: { value: "Ctrl", pressed: false }
+        shift: { value: "shift", pressed: false },
+        control: { value: "Ctrl", pressed: false }
       }
     };
   },
@@ -25,14 +25,15 @@ import KeyboardButton from "@/components/KeyboardButton.vue"; // @ is an alias t
     KeyboardButton
   },
   methods: {
-    keyDownHandler(event: any) {
-      if (this.keys[event.key]) {
-        this.keys[event.key].pressed = true;
+    async keyDownHandler(event: any) {
+      if (this.keys[event.key.toLowerCase()]) {
+        this.keys[event.key.toLowerCase()].pressed = true;
+      }
       }
     },
     keyUpHandler(event: any) {
-      if (this.keys[event.key]) {
-        this.keys[event.key].pressed = false;
+      if (this.keys[event.key.toLowerCase()]) {
+        this.keys[event.key.toLowerCase()].pressed = false;
       }
     }
   }
